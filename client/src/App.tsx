@@ -7,6 +7,12 @@ import Dashboard from "./pages/admin/Dashboard";
 import Features from "./pages/admin/Features";
 import Orders from "./pages/admin/Orders";
 import Products from "./pages/admin/Products";
+import ShoppingLayout from "./components/shopping/layout";
+import NotFound from "./pages/not-found";
+import Account from "./pages/shopping/Account";
+import Home from "./pages/shopping/Home";
+import Listing from "./pages/shopping/Listing";
+import Checkout from "./pages/shopping/Checkout";
 
 function App() {
   return (
@@ -23,6 +29,13 @@ function App() {
             <Route path="orders" element={<Orders />} />
             <Route path="products" element={<Products />} />
           </Route>
+          <Route path="/shop" element={<ShoppingLayout />}>
+            <Route path="home" element={<Home />} />
+            <Route path="listing" element={<Listing />} />
+            <Route path="checkout" element={<Checkout />} />
+            <Route path="account" element={<Account />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </>
