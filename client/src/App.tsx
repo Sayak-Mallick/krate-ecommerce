@@ -13,24 +13,52 @@ import Account from "./pages/shopping/Account";
 import Home from "./pages/shopping/Home";
 import Listing from "./pages/shopping/Listing";
 import Checkout from "./pages/shopping/Checkout";
+import CheckAuth from "./components/common/checkAuth";
 
 function App() {
+  const isAuthenticated = true;
+  const user = {
+    name: "Sayak",
+    role: "admin",
+  };
+
   return (
     <>
       <div className="flex flex-col overflow-hidden bg-white ">
         <Routes>
-          <Route path="/auth" element={<Authlayout />}>
+          <Route
+            path="/auth"
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+                <Authlayout />
+              </CheckAuth>
+            }
+          >
             <Route path="login" element={<AuthLogin />} />
             <Route path="register" element={<AuthRegister />} />
           </Route>
-          <Route path="/admin" element={<Adminlayout />}>
+          <Route
+            path="/admin"
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+                <Adminlayout />
+              </CheckAuth>
+            }
+          >
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="features" element={<Features />} />
             <Route path="orders" element={<Orders />} />
             <Route path="products" element={<Products />} />
           </Route>
-          <Route path="/shop" element={<ShoppingLayout />}>
-            <Route path="home" element={<Home />} />
+          <Route
+            path="/shop"
+            element={
+              <CheckAuth isAuthenticated={isAuthenticated} user={user}>
+                <ShoppingLayout />
+              </CheckAuth>
+            }
+          >
+            <Route index element={<Home />} />
             <Route path="listing" element={<Listing />} />
             <Route path="checkout" element={<Checkout />} />
             <Route path="account" element={<Account />} />
