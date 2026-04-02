@@ -4,11 +4,9 @@ interface AuthState {
   isAuthenticated: boolean;
 }
 
-
 const initialState: AuthState = {
   isAuthenticated: false,
 };
-
 
 const authSlice = createSlice({
   name: "auth",

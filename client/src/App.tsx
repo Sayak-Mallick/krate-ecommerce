@@ -1,13 +1,18 @@
+import { Route, Routes } from "react-router-dom";
+import Authlayout from "./components/auth/layout";
+import AuthLogin from "./pages/auth/Login";
+import AuthRegister from "./pages/auth/Register";
+
 function App() {
   return (
     <>
-      <div>
-        <h1>Krate- Ecommerce</h1>
-        <div className="flex min-h-svh flex-col items-center justify-center">
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Click me
-          </button>
-        </div>
+      <div className="flex flex-col overflow-hidden bg-white ">
+        <Routes>
+          <Route path="/auth" element={<Authlayout />}>
+            <Route path="login" element={<AuthLogin />} />
+            <Route path="register" element={<AuthRegister />} />
+          </Route>
+        </Routes>
       </div>
     </>
   );
